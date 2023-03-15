@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/filmscope/static/css/main.2e705555.css",
+    "main.js": "/filmscope/static/js/main.9df06d28.js",
+    "static/js/787.6a729aaa.chunk.js": "/filmscope/static/js/787.6a729aaa.chunk.js",
+    "index.html": "/filmscope/index.html",
+    "main.2e705555.css.map": "/filmscope/static/css/main.2e705555.css.map",
+    "main.9df06d28.js.map": "/filmscope/static/js/main.9df06d28.js.map",
+    "787.6a729aaa.chunk.js.map": "/filmscope/static/js/787.6a729aaa.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2e705555.css",
+    "static/js/main.9df06d28.js"
+  ]
+}
