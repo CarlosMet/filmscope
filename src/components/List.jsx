@@ -165,7 +165,7 @@ export const List = () => {
   return (
     
     <div className='list overflow-hidden'>
-    { !token && <Navigate to='/' replace={true} /> }
+    { !token && <Navigate to='/filmscope' replace={true} /> }
     <Header />
     <div className='banner min-h-[100vh] w-[100vw]' style={{
       backgroundImage:`url('${bannerInfo.img}')`,

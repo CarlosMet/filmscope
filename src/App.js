@@ -16,7 +16,7 @@ function App() {
   return (
     <div className="App dark:bg-[#0f0f0f] dark:text-slate-300">        
       <Routes>
-        <Route path='/' element={<Login />} />
+        <Route path='/filmscope' element={<Login />} />
         <Route path='/list' element={<List />} />
         <Route path='/detail' element={<Detail />} />  
         <Route path='/favs' element={<Favorites />} /> 
