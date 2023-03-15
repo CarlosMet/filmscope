@@ -1,0 +1,87 @@
+.banner{    
+    background-size: cover;
+    background-position: center;
+}
+
+.navbar{
+    transition:1s ease;
+}
+.nav-option{
+    position: relative;
+}
+.nav-option::after{
+    content: '';
+    height: 2px;
+    width: 0;
+    background-color: #14C8B9;
+    position: absolute;
+    bottom: -22px;
+    left: 0;
+    box-shadow: 0 2px 4px rgba(255,255,255,0.1), 0 20px 25px -5px rgba(255,255,255,0.1);
+}
+.nav-option:hover::after{
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(255,255,255,0.1), 0 20px 25px -5px rgba(255,255,255,0.1);
+}
+.login{
+    height: 100vh;
+    background-image: url('https://images3.alphacoders.com/823/82355.jpg');  
+    background-size: cover;       
+    background-position: center;
+}
+.login form{
+    background-color: rgba(1,1,1,0.8);
+}
+.login form input{
+    background-color: rgba(107, 114, 128, 0.3);
+}
+
+.menuline1{    
+    background-color: white;
+    animation: line1 0.8s linear;
+    transform: rotate(45deg);
+    transition: transform 0.7s ease;
+}
+.menuline2{
+    width: 0;
+    transition: width 0.4s ease;
+}
+.menuline3{
+    transform: translateY(-12px) rotate(-45deg);  
+    transition: transform 0.7s ease;  
+}
+
+.youtube{    
+    width: 320px;
+    height: 350px;
+    margin:auto;
+}
+@media (min-width: 750px){
+    .youtube{
+        width: 600px;
+        height: 570px;
+    }
+}
+@media (min-width: 1000px){
+    .youtube{
+        width: 920px;
+        height: 500px;
+    }
+}
+@media (min-width: 1200px){
+    .youtube{
+        width: 1020px;
+        height: 560px;        
+    }
+}
+
+.avatar{
+    width: 45px !important;
+    height: 45px !important;
+    aspect-ratio: 1;
+    border-radius: 999px;
+
+}
+
+
+
