@@ -223,7 +223,9 @@ export const List = () => {
             })} 
             className='absolute bg-[rgba(128,128,128,0.9)] cursor-pointer rounded-full w-9 right-5 top-4 hover:bg-gray-300' >
               {               
-              favsList.find( search => search.id === movie.id ) ? <img src='red-heart.svg' className={favImgVisibility} /> : <img src='./heart.svg' className={favImgVisibility} />
+              favsList ? (
+                favsList.find( search => search.id === movie.id ) ? <img src='red-heart.svg' className={favImgVisibility} /> : <img src='./heart.svg' className={favImgVisibility} />
+              ) : null
               }
               <div className='flex justify-center items-center relative'>
                 <div style={{display:loaderVisibility}} className='loader'></div>
