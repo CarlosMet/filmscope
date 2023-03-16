@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import ThemeSwitch from '../features/ThemeSwitch'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-
+import searchIcon from '../images/search.svg'
 
 const Header = () => {
 
@@ -135,7 +135,7 @@ const Header = () => {
             <div className='w-[140px] flex justify-center lg:justify-end'>
               <div className='border-b border-slate-500 relative' style={{width:inputWidth, transition: 'width 0.5s ease'}}>
                 <input type="text" className='bg-transparent text-white px-5 md:w-full focus:outline-none' onChange={getQuery} onClick={inputResize} onBlur={inputBlur}/>
-                <img src='./search.svg' className='w-7 p-1 top-0 -left-1 absolute' />
+                <img src={searchIcon} className='w-7 p-1 top-0 -left-1 absolute' />
               </div>
             </div>
           <div className='relative'>
@@ -168,7 +168,7 @@ const Header = () => {
 
           </div>
           
-          <div className='hidden lg:block'>
+          <div className='hidden lg:flex gap-2'>
             <button className='hidden lg:block text-slate-300' onClick={logoutHandler}>
             <Link to='/'>
               {token ? 'log out' : null}
