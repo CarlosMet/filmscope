@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { Navigate, Link } from 'react-router-dom'
 import YouTube from 'react-youtube'
 import './components.css'
+import starIcon from '../images/star.svg'
+import halfStarIcon from '../images/hs.svg'
+import emptyStar from '../images/empty.svg'
+import oneStarIcon from '../images/onestar.svg'
 
 const Detail = () => {
 
@@ -23,9 +27,10 @@ const Detail = () => {
   const [recommendations, setRecommendations] = useState(null)
   const [reviews, setReviews] = useState(null)
   const [starsToShow, setStarsToShow] = useState(['','','','',''])
+  
 
   useEffect(()=>{
-    
+    window.scrollTo(0, 0)
     fetch(apiCall)
     .then(res => res.json())
     .then( data =>{      
@@ -94,14 +99,15 @@ const Detail = () => {
 
         <div style={{backgroundImage:`linear-gradient(rgba(5, 7, 12, 0.90), rgba(5,7,12,0.90) ), url(${detailsBg})`,
         backgroundSize:'cover',
-        backgroundPosition:'right'
+        backgroundPosition:'right',
+        minHeight:'100vh'
       
         }} className="py-3 lg:py-12 xl:py-16 2xl:py-32 px-3 md:px-12 lg:px-24 xl:px-36 2xl:px-52">
           <h2 className="text-3xl text-white font-bold mb-4">{movieDetails.title}</h2>
           <p className="text-slate-300 text-sm mb-2">Release Date: {movieDetails.release_date}</p>
                         
           <div className='flex lg:hidden items-center gap-3 mt-2 mb-2'>
-            <img src='./star.svg' className='w-6' />
+            <img src={starIcon} className='w-6' />
             <p className='text-slate-400'><span className='text-lg text-slate-200 font-semibold'>{movieDetails.vote_average? movieDetails.vote_average.toFixed(2) : null}</span> / 10</p>
             <span className='text-slate-400'>.</span>
             <p className='text-slate-400'>{movieDetails.vote_count} votes</p>
@@ -116,7 +122,7 @@ const Detail = () => {
               <p className="md:text-lg text-slate-300 2xl:max-w-[800px]">{movieDetails.overview}</p>   
               <p className='text-white text-lg hidden lg:block mt-2 xl:mt-4 2xl:mt-9 font-semibold'>Rating:</p>              
               <div className='hidden lg:flex items-center gap-3 mt-2 2xl:mt-6'>
-                <img src='./star.svg' className='w-6' />
+                <img src={starIcon} className='w-6' />
                 <p className='text-slate-400'><span className='text-lg text-slate-200 font-semibold'>{movieDetails.vote_average ? movieDetails.vote_average.toFixed(2) : null }</span> / 10</p>
                 <span className='text-slate-400'>.</span>
                 <p className='text-slate-400'>{movieDetails.vote_count} votes</p>
@@ -183,7 +189,7 @@ const Detail = () => {
                     <div className='flex gap-1'>
                       {starRating.map( (singleStar, index) =>{
                          return(
-                          <img className='w-4' key={index} src={singleStar === '' ? './empty.svg' : ( singleStar === 'full' ? './onestar.svg' : (singleStar ==='half' ? './hs.svg' : '') ) } />
+                          <img className='w-4' key={index} src={singleStar === '' ? emptyStar : ( singleStar === 'full' ? oneStarIcon : (singleStar ==='half' ? halfStarIcon : '') ) } />
                          )
                       } )}
                     </div>
@@ -204,8 +210,10 @@ const Detail = () => {
         </div>
         
       </div>
-      :<div>
-        cargando...
+      :<div className=''>
+        <div className=''>
+          <div className='loading w-9 h-9 lg:w-11 lg:h-11 border-4 border-gray-400 mx-auto rounded-full border-t-transparent my-54'></div>          
+        </div>
       </div>
       }
      

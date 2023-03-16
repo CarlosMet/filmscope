@@ -4,6 +4,11 @@ import axios from 'axios'
 import swal from 'sweetalert'
 import './components.css'
 import Header from './Header'
+import starIcon from '../images/star.svg'
+import redHeartIcon from '../images/red-heart.svg'
+import heartIcon from '../images/heart.svg'
+import leftIcon from '../images/left.svg'
+import rightIcon from '../images/right.svg'
 
 const apiKey = '511f0e4b3613ed97583cf0a13a5f547e'
 
@@ -176,7 +181,7 @@ export const List = () => {
       <div className='text-white pt-20 pl-5 lg:pl-20 xl:pl-28 xl:pt-28 2xl:pl-40 2xl:pt-52 h-[400px] xl:h-[370px] 2xl:h-[620px]'>
         
         <h2 className='text-2xl lg:text-3xl font-bold 2xl:text-4xl tracking-tight'>{Object.keys(bannerInfo).length>0 ? bannerInfo.title: null}</h2>        
-        <img src="./stars.svg" alt="star-rating" className='w-32 mb-2' />    
+        <img src={starIcon} alt="star-rating" className='w-8 mb-2' />    
         <div className="flex">
           <button className='px-1 w-10 h-8 bg-[#0f4847]' onClick={()=>addRemoveFavs({
             imgUrl: `https://image.tmdb.org/t/p/500${bannerInfo.img}`,
@@ -224,7 +229,7 @@ export const List = () => {
             className='absolute bg-[rgba(128,128,128,0.9)] cursor-pointer rounded-full w-9 right-5 top-4 hover:bg-gray-300' >
               {               
               favsList ? (
-                favsList.find( search => search.id === movie.id ) ? <img src='red-heart.svg' className={favImgVisibility} /> : <img src='./heart.svg' className={favImgVisibility} />
+                favsList.find( search => search.id === movie.id ) ? <img src={redHeartIcon} className={favImgVisibility} /> : <img src={heartIcon} className={favImgVisibility} />
               ) : null
               }
               <div className='flex justify-center items-center relative'>
@@ -246,15 +251,15 @@ export const List = () => {
       
     </div>
     <div className='flex items-center gap-4 lg:gap-7 xl:gap-10 2xl:gap-14 justify-center mt-8 xl:mt-12'>
-      <img src="./left.svg" className='w-6 hidden md:block' alt="" onClick={()=> arrowHandler('left')} />
-      <div className='flex items-center gap-4 lg:gap-7 xl:gap-10 2xl:gap-14 text-[#6e7386]'>
+      <img src={leftIcon} className='w-6 hidden md:block' alt="" onClick={()=> arrowHandler('left')} />
+      <div className='flex items-center gap-4 lg:gap-7 xl:gap-10 2xl:gap-14 text-slate-700 dark:text-slate-300'>
         <button className='cursor-pointer w-7 h-7 rounded-md' onClick={pageChangeHandler} style={{backgroundColor:btnBgColor[0]}}>1</button>
         <button className='cursor-pointer w-7 h-7 rounded-md' onClick={pageChangeHandler} style={{backgroundColor:btnBgColor[1]}}>2</button>
         <button className='cursor-pointer w-7 h-7 rounded-md' onClick={pageChangeHandler} style={{backgroundColor:btnBgColor[2]}}>3</button>
         <button className='cursor-pointer w-7 h-7 rounded-md' onClick={pageChangeHandler} style={{backgroundColor:btnBgColor[3]}}>4</button>
         <button className='cursor-pointer w-7 h-7 rounded-md' onClick={pageChangeHandler} style={{backgroundColor:btnBgColor[4]}}>5</button>
       </div>
-      <img src="./right.svg" className='w-6 hidden md:block' alt="" onClick={()=> arrowHandler('right')} />
+      <img src={rightIcon} className='w-6 hidden md:block' alt="" onClick={()=> arrowHandler('right')} />
     </div>
     </div>
     

@@ -74,7 +74,8 @@ const Login = () => {
                 <span className='font-semibold'>Password:</span><br />
                 <input className='border bg-inherit rounded-md w-[200px] px-2' type="password" name='password' />
             </label>
-            <button className='bg-blue-400 w-[200px] rounded-md mt-6' type='submit'>Sign in</button>
+            <button className='bg-[#14C8B9] w-[200px] rounded-md mt-6' type='submit'>Sign in</button>
+            <p className='text-white'> Note: This is a dummie login* </p>
         </form>
 
     </div>

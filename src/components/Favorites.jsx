@@ -13,7 +13,7 @@ const Favorites = () => {
     {token === 'dummietoken' 
 
       ?<div className='mt-20 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 place-items-center'>
-        {favs.map( (fav)=>{
+        {favs && favs.map( (fav)=>{
             return(
                 <div className='shadow-black shadow-lg flex flex-col items-center rounded-xl overflow-hidden max-w-[172px] h-[210px] md:max-w-[200px] mb-10 md:h-64 pb-1'>
                   <div>

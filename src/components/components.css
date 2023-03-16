@@ -82,6 +82,12 @@
     border-radius: 999px;
 
 }
+.loading{
+    animation: spin linear 1.2s infinite;
+}
 
-
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to {transform: rotate(360deg); }
+}
 

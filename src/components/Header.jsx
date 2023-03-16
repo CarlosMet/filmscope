@@ -3,6 +3,9 @@ import ThemeSwitch from '../features/ThemeSwitch'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import searchIcon from '../images/search.svg'
+import homeIcon from '../images/home.svg'
+import likeIcon from '../images/like.svg'
+import avatarIcon from '../images/avatar.svg'
 
 const Header = () => {
 
@@ -89,13 +92,13 @@ const Header = () => {
             <div ref={line3} className='w-7 h-[3px] bg-white'></div>
           </button>
           <div className="py-24 text-center block lg:hidden -z-10 absolute -top-8 -left-2 bg-white dark:bg-gray-900 w-[100vw] h-[103vh]" style={{display:menuVisibility}}>
-            <Link className='' to={'/'}><div className='my-5 flex gap-2 items-center w-24 mx-auto'><img className='w-9' src="./home.svg" alt="home" /><p className='text-lg font-semibold'>Home</p></div></Link>
-            <Link to={'/favs'} ><div className='my-5 flex gap-2 items-center w-24 mx-auto'><img className='w-9' src="./like.svg" alt="like" /><p className='text-lg font-semibold'>Favorites</p></div></Link>
+            <Link className='' to={'/filmscope'}><div className='my-5 flex gap-2 items-center w-24 mx-auto'><img className='w-9' src={homeIcon} alt="home" /><p className='text-lg font-semibold'>Home</p></div></Link>
+            <Link to={'/favs'} ><div className='my-5 flex gap-2 items-center w-24 mx-auto'><img className='w-9' src={likeIcon} alt="like" /><p className='text-lg font-semibold'>Favorites</p></div></Link>
             <div className='border mt-16 w-16 mx-auto pt-1 border-slate-500 rounded-lg dark:border-white'><ThemeSwitch /></div>
             <button className='mt-2' onClick={logoutHandler}>
-            <Link to='/'>
+            <Link to='/filmscope'>
               <div className='flex gap-4 items-center w-32 mx-auto'>
-                <img className='w-9' src="./avatar.svg" alt="" />
+                <img className='w-9' src={avatarIcon} alt="avatar-icon" />
                 <p className=''>{token ? 'log out' : null}</p>
               </div>
             </Link>
@@ -104,7 +107,7 @@ const Header = () => {
         </div>
 
         <div className='text-[#14C8B9] text-2xl md:text-3xl font-extrabold xl:text-4xl ml-9 lg:ml-0'>
-          <Link to='/'>
+          <Link to='/filmscope'>
             FilmScope
           </Link>
         </div>
@@ -112,7 +115,7 @@ const Header = () => {
         <div className='hidden lg:block text-slate-300 font-semibold'>
           <ul className='flex gap-12 xl:gap-20 items-center'>
             <li className='hover:text-[#14C8B9] nav-option'>
-              <Link to='/'>
+              <Link to='/filmscope'>
                 Home
               </Link>
             </li>
@@ -120,12 +123,7 @@ const Header = () => {
               <Link to='/favs'>
                 Favorites
               </Link>
-            </li>
-            <li className='hover:text-[#14C8B9] nav-option'>
-              <Link to='/contact'>
-                Contact
-              </Link>
-            </li>
+            </li>            
           </ul>
         </div>
 
@@ -170,7 +168,7 @@ const Header = () => {
           
           <div className='hidden lg:flex gap-2'>
             <button className='hidden lg:block text-slate-300' onClick={logoutHandler}>
-            <Link to='/'>
+            <Link to='/filmscope'>
               {token ? 'log out' : null}
             </Link>
             </button>

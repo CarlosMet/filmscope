@@ -1,4 +1,6 @@
 import React, {useState, useEffect} from 'react'
+import dark from '../images/dark.svg'
+import light from '../images/light.svg'
 
 
 const ThemeSwitch = () => {
@@ -21,8 +23,8 @@ const ThemeSwitch = () => {
     <div>
         <button onClick={themeHandler}>
             {theme === 'dark' 
-            ? <img className='w-6' src='/light.svg' />
-            : <img className='w-6' src='/dark.svg' />
+            ? <img className='w-6' src={light} />
+            : <img className='w-6' src={dark} />
             }
         </button>
     </div>
