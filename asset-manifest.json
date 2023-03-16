@@ -1,15 +1,16 @@
 {
   "files": {
     "main.css": "/filmscope/static/css/main.2e705555.css",
-    "main.js": "/filmscope/static/js/main.b7c97bae.js",
+    "main.js": "/filmscope/static/js/main.24653489.js",
     "static/js/787.6a729aaa.chunk.js": "/filmscope/static/js/787.6a729aaa.chunk.js",
     "index.html": "/filmscope/index.html",
+    "static/media/search.svg": "/filmscope/static/media/search.42f91f7456d3165bfc8bf2b2612e85e4.svg",
     "main.2e705555.css.map": "/filmscope/static/css/main.2e705555.css.map",
-    "main.b7c97bae.js.map": "/filmscope/static/js/main.b7c97bae.js.map",
+    "main.24653489.js.map": "/filmscope/static/js/main.24653489.js.map",
     "787.6a729aaa.chunk.js.map": "/filmscope/static/js/787.6a729aaa.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.2e705555.css",
-    "static/js/main.b7c97bae.js"
+    "static/js/main.24653489.js"
   ]
 }
