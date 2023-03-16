@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/filmscope/static/css/main.23297a5c.css",
-    "main.js": "/filmscope/static/js/main.471e2b19.js",
+    "main.css": "/filmscope/static/css/main.00fd31bd.css",
+    "main.js": "/filmscope/static/js/main.9c76d19b.js",
     "static/js/787.6a729aaa.chunk.js": "/filmscope/static/js/787.6a729aaa.chunk.js",
     "static/media/hs.svg": "/filmscope/static/media/hs.d2c20dd7b369a1212f722e2340c24743.svg",
     "static/media/heart.svg": "/filmscope/static/media/heart.fa32f063926b3dd04f002908a562de73.svg",
@@ -18,12 +18,12 @@
     "static/media/search.svg": "/filmscope/static/media/search.42f91f7456d3165bfc8bf2b2612e85e4.svg",
     "static/media/avatar.svg": "/filmscope/static/media/avatar.9979ef47c85bbc8e45db51517c0d60f7.svg",
     "static/media/right.svg": "/filmscope/static/media/right.977c10e59f2d7f19a203d1122e57e19c.svg",
-    "main.23297a5c.css.map": "/filmscope/static/css/main.23297a5c.css.map",
-    "main.471e2b19.js.map": "/filmscope/static/js/main.471e2b19.js.map",
+    "main.00fd31bd.css.map": "/filmscope/static/css/main.00fd31bd.css.map",
+    "main.9c76d19b.js.map": "/filmscope/static/js/main.9c76d19b.js.map",
     "787.6a729aaa.chunk.js.map": "/filmscope/static/js/787.6a729aaa.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.23297a5c.css",
-    "static/js/main.471e2b19.js"
+    "static/css/main.00fd31bd.css",
+    "static/js/main.9c76d19b.js"
   ]
 }
