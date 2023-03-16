@@ -6,6 +6,7 @@ import starIcon from '../images/star.svg'
 import halfStarIcon from '../images/hs.svg'
 import emptyStar from '../images/empty.svg'
 import oneStarIcon from '../images/onestar.svg'
+import ThemeSwitch from '../features/ThemeSwitch'
 
 const Detail = () => {
 
@@ -95,7 +96,10 @@ const Detail = () => {
     <div>
       {!token && <Navigate to={'/'} />}
       {token && movieDetails
-      ?<div className='' >
+      ?<div className='relative' >
+        <div className='fixed top-[35%] right-2 lg:right-10 bg-[rgba(31,31,31,0.8)] p-1 rounded-full w-8 h-8'>
+          <ThemeSwitch />
+        </div>
 
         <div style={{backgroundImage:`linear-gradient(rgba(5, 7, 12, 0.90), rgba(5,7,12,0.90) ), url(${detailsBg})`,
         backgroundSize:'cover',

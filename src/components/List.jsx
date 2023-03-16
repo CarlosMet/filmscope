@@ -241,7 +241,7 @@ export const List = () => {
               <img className='rounded-t-lg' src={'https://image.tmdb.org/t/p/w500'+ movie.poster_path} alt="" />
             </div>
             <div>
-              <h3 className='text-left text-xl lg:text-2xl font-bold h-16 tracking-tight mb-6 xl:mb-1'>{movie.title.length>28 ? movie.title.substring(0, 28) + '...' : movie.title }</h3>
+              <h3 className='text-left text-xl lg:text-2xl font-bold h-24 tracking-tight mb-6 xl:mb-1'>{movie.title.length>28 ? movie.title.substring(0, 28) + '...' : movie.title }</h3>
               <p className='text-left h-36 xl:h-36 2xl:h-28'>{movie.overview.substring(0, 140) + '...'}</p>
               <button className='bg-[#14C8B9] px-4 rounded-md font-bold text-lg mt-2 xl:mt-7'><Link to={`/detail?movieID=${movie.id}`}> Show more </Link></button>
             </div>
