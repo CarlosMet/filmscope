@@ -229,7 +229,7 @@ export const List = () => {
             className='absolute bg-[rgba(128,128,128,0.9)] cursor-pointer rounded-full w-9 right-5 top-4 hover:bg-gray-300' >
               {               
               favsList ? (
-                favsList.find( search => search.id === movie.id ) ? <img src={redHeartIcon} className={favImgVisibility} /> : <img src={heartIcon} className={favImgVisibility} />
+                favsList.find( search => search.id === movie.id ) ? <img src='https://img.icons8.com/emoji/256/heart-suit.png' className={favImgVisibility} /> : <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Heart_empty_font_awesome.svg/512px-Heart_empty_font_awesome.svg.png?20130126204600' className={favImgVisibility} />
               ) : null
               }
               <div className='flex justify-center items-center relative'>
@@ -241,8 +241,8 @@ export const List = () => {
               <img className='rounded-t-lg' src={'https://image.tmdb.org/t/p/w500'+ movie.poster_path} alt="" />
             </div>
             <div>
-              <h3 className='text-left text-xl lg:text-2xl font-bold h-24 tracking-tight mb-6 xl:mb-1'>{movie.title.length>28 ? movie.title.substring(0, 28) + '...' : movie.title }</h3>
-              <p className='text-left h-36 xl:h-36 2xl:h-28'>{movie.overview.substring(0, 140) + '...'}</p>
+              <h3 className='text-left text-xl lg:text-2xl font-bold h-9 lg:h-24 tracking-tight mb-6 xl:mb-1'>{movie.title.length>28 ? movie.title.substring(0, 28) + '...' : movie.title }</h3>
+              <p className='text-left h-28 lg:h-36  2xl:h-28'>{movie.overview.substring(0, 140) + '...'}</p>
               <button className='bg-[#14C8B9] px-4 rounded-md font-bold text-lg mt-2 xl:mt-7'><Link to={`/detail?movieID=${movie.id}`}> Show more </Link></button>
             </div>
         </div>

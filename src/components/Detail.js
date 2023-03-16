@@ -106,7 +106,7 @@ const Detail = () => {
         backgroundPosition:'right',
         minHeight:'100vh'
       
-        }} className="py-3 lg:py-12 xl:py-16 2xl:py-32 px-3 md:px-12 lg:px-24 xl:px-36 2xl:px-52">
+        }} className="py-16 md:py-3 xl:py-16 2xl:py-32 px-3 md:px-12 lg:px-24 xl:px-36 2xl:px-52">
           <h2 className="text-3xl text-white font-bold mb-4">{movieDetails.title}</h2>
           <p className="text-slate-300 text-sm mb-2">Release Date: {movieDetails.release_date}</p>
                         
