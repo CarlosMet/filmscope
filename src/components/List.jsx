@@ -216,7 +216,7 @@ export const List = () => {
     <h2 className='text-xl xl:text-3xl font-extrabold text-center mt-7 tracking-tighter'>Popular movies</h2>
     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-3 lg:gap-6 px-4 lg:px-10 xl:px-32 mt-14 lg:mt-20'>
           
-      { movieList.map( (movie)=>{
+      { movieList && movieList.map( (movie)=>{
         return (
           <div className='py-3 px-3 relative' key={movie.id}>
             <div 
@@ -226,7 +226,7 @@ export const List = () => {
               title: movie.title,
               id: movie.id
             })} 
-            className='absolute bg-[rgba(128,128,128,0.9)] cursor-pointer rounded-full w-9 right-5 top-4 hover:bg-gray-300' >
+            className='absolute bg-[rgba(128,128,128,0.9)] cursor-pointer rounded-full w-9 right-5 top-4 hover:bg-gray-300 z-10 p-1' >
               {               
               favsList ? (
                 favsList.find( search => search.id === movie.id ) ? <img src='https://img.icons8.com/emoji/256/heart-suit.png' className={favImgVisibility} /> : <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Heart_empty_font_awesome.svg/512px-Heart_empty_font_awesome.svg.png?20130126204600' className={favImgVisibility} />
