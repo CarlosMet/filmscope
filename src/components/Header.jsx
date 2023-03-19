@@ -81,7 +81,7 @@ const Header = () => {
 
   return (
     <>    
-    <header className='nabvar fixed top-0 left-0 w-full border-b-[0.1px] border-[#313C3E] z-10'>
+    <header className='nabvar fixed top-0 left-0 w-full border-b-[0.1px] border-[#313C3E] z-20'>
 
       <nav className='flex items-center px-2 justify-between lg:px-5 xl:px-12 2xl:px-18 h-[65px]' style={{backgroundColor:bgColor}}>
 

@@ -221,7 +221,7 @@ export const List = () => {
           <div className='py-3 px-3 relative' key={movie.id}>
             <div 
             onClick={()=>addRemoveFavs({
-              imgUrl: `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`,
+              imgUrl: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
               description: movie.overview,
               title: movie.title,
               id: movie.id
