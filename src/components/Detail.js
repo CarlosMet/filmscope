@@ -7,6 +7,7 @@ import halfStarIcon from '../images/hs.svg'
 import emptyStar from '../images/empty.svg'
 import oneStarIcon from '../images/onestar.svg'
 import ThemeSwitch from '../features/ThemeSwitch'
+import { addRevoveFav } from '../features/AddFavs'
 
 const Detail = () => {
 
@@ -28,7 +29,8 @@ const Detail = () => {
   const [recommendations, setRecommendations] = useState(null)
   const [reviews, setReviews] = useState(null)
   const [starsToShow, setStarsToShow] = useState(['','','','',''])
-  
+  console.log(window.location.href)
+  const [location, setLocation] = useState(window.location.href)
 
   useEffect(()=>{
     window.scrollTo(0, 0)
@@ -55,10 +57,9 @@ const Detail = () => {
     fetch(thirdApiCall).then(res => res.json())
     .then(data => {
       const {results} = data
-      setReviews(results)
-      const rating = results[0].author_details?.rating      
+      setReviews(results)          
     })
-  }, [])
+  }, [location])
 
   const showStars = rating =>{
     let integer = Math.floor(rating/2)
@@ -93,8 +94,8 @@ const Detail = () => {
   
 
   return (
-    <div>
-      {!token && <Navigate to={'/'} />}
+    <div className=''>
+      {!token && <Navigate to={'/filmscope'} />}
       {token && movieDetails
       ?<div className='relative' >
         <div className='fixed top-[35%] right-2 lg:right-10 bg-[rgba(31,31,31,0.8)] p-1 rounded-full w-8 h-8'>
@@ -123,7 +124,13 @@ const Detail = () => {
             </div>
 
             <div className=" w-2/3 lg:w-4/5">        
-              <p className="md:text-lg text-slate-300 2xl:max-w-[800px]">{movieDetails.overview}</p>   
+              <p className="md:text-lg text-slate-300 2xl:max-w-[800px]">{movieDetails.overview}</p>  
+              <button onClick={()=> addRevoveFav({
+                imgUrl: `https://image.tmdb.org/t/p/original${movieDetails.poster_path}`,
+                description: movieDetails.overview,
+                title: movieDetails.title,
+                id: movieDetails.id
+              })}>add</button> 
               <p className='text-white text-lg hidden lg:block mt-2 xl:mt-4 2xl:mt-9 font-semibold'>Rating:</p>              
               <div className='hidden lg:flex items-center gap-3 mt-2 2xl:mt-6'>
                 <img src={starIcon} className='w-6' />
@@ -164,7 +171,9 @@ const Detail = () => {
             recommendations.slice(0,4).map( (recommended) => {
               return(                
                   <div key={recommended.id}>
-                    <img src={`https://image.tmdb.org/t/p/w500${recommended.poster_path}`} />
+                    <Link onClick={()=> setLocation(recommended.id)} to={`/filmscope/detail?movieID=${recommended.id}`}>
+                      <img src={`https://image.tmdb.org/t/p/w500${recommended.poster_path}`} />
+                    </Link>
                   </div>                
               )
             } )

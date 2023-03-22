@@ -53,7 +53,7 @@ const Login = () => {
         // }
             localStorage.setItem('token', 'dummietoken')
             swal(<h2>Succesfully logged in</h2>)
-            navigate('/list')
+            navigate('/filmscope/list')
         }
             
     }
@@ -62,7 +62,7 @@ const Login = () => {
 
   return (
     <>
-    { token && <Navigate to='/list'/> }
+    { token && <Navigate to='/filmscope/list'/> }
     <div className='login py-24 lg:py-28 2xl:py-48'>
         <form onSubmit={submitHandler} className='flex flex-col max-w-[280px] mx-auto gap-2 items-center py-20 lg:max-w-[350px] text-white rounded-xl'>
             <h2 className='text-xl font-bold mb-3'>Sign in</h2>

@@ -93,7 +93,7 @@ const Header = () => {
           </button>
           <div className="py-24 text-center block lg:hidden -z-10 absolute -top-8 -left-2 bg-white dark:bg-gray-900 w-[100vw] h-[103vh]" style={{display:menuVisibility}}>
             <Link className='' to={'/filmscope'}><div className='my-5 flex gap-2 items-center w-24 mx-auto'><img className='w-9' src={homeIcon} alt="home" /><p className='text-lg font-semibold'>Home</p></div></Link>
-            <Link to={'/favs'} ><div className='my-5 flex gap-2 items-center w-24 mx-auto'><img className='w-9' src={likeIcon} alt="like" /><p className='text-lg font-semibold'>Favorites</p></div></Link>
+            <Link to={'/filmscope/favs'} ><div className='my-5 flex gap-2 items-center w-24 mx-auto'><img className='w-9' src={likeIcon} alt="like" /><p className='text-lg font-semibold'>Favorites</p></div></Link>
             <div className='border mt-16 w-16 mx-auto pt-1 border-slate-500 rounded-lg dark:border-white'><ThemeSwitch /></div>
             <button className='mt-2' onClick={logoutHandler}>
             <Link to='/filmscope'>
@@ -120,7 +120,7 @@ const Header = () => {
               </Link>
             </li>
             <li className='hover:text-[#14C8B9] nav-option'>
-              <Link to='/favs'>
+              <Link to='/filmscope/favs'>
                 Favorites
               </Link>
             </li>            
@@ -147,7 +147,7 @@ const Header = () => {
                         <div className='py-2'>
                           <img src={`https://image.tmdb.org/t/p/w300${moviefound.poster_path}`} className="w-20" alt="" />
                         </div>
-                          <Link to={`/detail?movieID=${moviefound.id}`} onClick={()=>console.log('clicked')}>
+                          <Link to={`/filmscope/detail?movieID=${moviefound.id}`} onClick={()=>console.log('clicked')}>
                         <div>
                             <p className='text-white font-bold text-lg'>{moviefound.title}</p>
                             <p>{moviefound.overview.slice(0,50) + '...'}</p>

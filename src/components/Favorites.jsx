@@ -6,6 +6,7 @@ const Favorites = () => {
 
     const token = localStorage.getItem('token')
     const favs = JSON.parse(localStorage.getItem('favs'))
+    console.log(favs)
     const [cardsBgColor, setCardsBgColor] = useState('#E5E6E6')
 
     useEffect(() => {
@@ -34,16 +35,15 @@ const Favorites = () => {
       ?<div className='grid grid-cols-1 place-items-center px-4'>
         {favs && favs.map( (fav)=>{
             return(
-              <div className='my-6 flex flex-col-reverse md:flex-row h-[420px] w-[345px] md:w-[650px] md:h-[350px] relative rounded-xl overflow-hidden shadow-gray-500 shadow-xl dark:shadow-transparent' key={fav.id}>
+              <div className='my-6 flex flex-col-reverse md:flex-row h-[420px] w-[345px] md:w-[650px] md:h-[350px] xl:w-[740px] xl:h-80 relative rounded-xl overflow-hidden shadow-gray-500 shadow-xl dark:shadow-transparent' key={fav.id}>
 
                   <div className='absolute top-28 left-0 px-6 md:top-9'>
-                    <div className='flex gap-6'> 
+                    <div className='flex gap-6 items-center'> 
                     <div>
-                      <img className='w-20' src={fav.imgUrl} alt={fav.title} />
+                      <img className='w-16 h-24' src={fav.imgUrl} alt={fav.title} />
                     </div>
                     <div>
-                      <h2 className='font-bold text-lg'>{fav.title}</h2>
-                      <p>year</p>
+                      <h2 className='font-bold text-lg tracking-tight'>{fav.title}</h2>                      
                     </div>
                     </div>
                     <p className='tracking-tight text-sm mt-5 w-full md:w-3/5 text-[#545454]'>{fav.description.length>140 ? fav.description.substring(0, 140) + '...' : fav.description}</p>

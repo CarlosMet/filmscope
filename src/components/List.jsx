@@ -41,7 +41,6 @@ export const List = () => {
       id:e.id,
       imgUrl: e.imgUrl,
       title: e.title
-
     }
     let isMovieInFavs = tempMovies.filter( fav => {
       return fav.id === e.id
@@ -190,7 +189,7 @@ export const List = () => {
             id: bannerInfo.id
             })}>add
           </button> 
-          <button className='w-11 h-8 bg-[#14c5b1]'><Link to={`/detail?movieID=${bannerInfo.id}`}>Play</Link></button>
+          <button className='w-11 h-8 bg-[#14c5b1]'><Link to={`/filmscope/detail?movieID=${bannerInfo.id}`}>Play</Link></button>
         </div>   
         <p className='text-slate-300 max-w-[420px] 2xl:max-w-[470px] overflow-hidden mb-8 2xl:text-lg 2xl:mb-28'>{Object.keys(bannerInfo).length>0 ? (bannerInfo.overview.length > 315 ? bannerInfo.overview.substring(0, 315) + '...' : bannerInfo.overview ) : null }</p>
       </div>
@@ -243,7 +242,7 @@ export const List = () => {
             <div>
               <h3 className='text-left text-xl lg:text-2xl font-bold h-9 lg:h-24 tracking-tight mb-6 xl:mb-1'>{movie.title.length>28 ? movie.title.substring(0, 28) + '...' : movie.title }</h3>
               <p className='text-left h-28 lg:h-36  2xl:h-28'>{movie.overview.substring(0, 140) + '...'}</p>
-              <button className='bg-[#14C8B9] px-4 rounded-md font-bold text-lg mt-2 xl:mt-7'><Link to={`/detail?movieID=${movie.id}`}> Show more </Link></button>
+              <button className='bg-[#14C8B9] px-4 rounded-md font-bold text-lg mt-2 xl:mt-7'><Link to={`/filmscope/detail?movieID=${movie.id}`}> Show more </Link></button>
             </div>
         </div>
         )
