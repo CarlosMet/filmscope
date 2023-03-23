@@ -1,29 +1,32 @@
 {
   "files": {
-    "main.css": "/filmscope/static/css/main.505c0ea5.css",
-    "main.js": "/filmscope/static/js/main.99dea699.js",
+    "main.css": "/filmscope/static/css/main.d6977d80.css",
+    "main.js": "/filmscope/static/js/main.fa7dad23.js",
     "static/js/787.6a729aaa.chunk.js": "/filmscope/static/js/787.6a729aaa.chunk.js",
-    "static/media/hs.svg": "/filmscope/static/media/hs.d2c20dd7b369a1212f722e2340c24743.svg",
+    "static/media/trash.svg": "/filmscope/static/media/trash.7e0fb79eb901ac31d2de31115b2c7c5d.svg",
     "static/media/heart.svg": "/filmscope/static/media/heart.fa32f063926b3dd04f002908a562de73.svg",
     "static/media/like.svg": "/filmscope/static/media/like.5121fc623c403405acf3123ba684f29f.svg",
     "static/media/empty.svg": "/filmscope/static/media/empty.483bcb9ad63d43f2d2448b0e1c782926.svg",
+    "static/media/hs.svg": "/filmscope/static/media/hs.49ddfb5222bfa06d2f8878d17111ffc8.svg",
     "static/media/home.svg": "/filmscope/static/media/home.359f1c953800fd3c564809f3d7323ebd.svg",
     "static/media/light.svg": "/filmscope/static/media/light.2706926b3d64b971824ed2567160b16f.svg",
     "static/media/red-heart.svg": "/filmscope/static/media/red-heart.57afeac1757b207b8c128e31283b4bac.svg",
     "static/media/star.svg": "/filmscope/static/media/star.daa0330fa0faf9acb38d467583505d44.svg",
     "static/media/left.svg": "/filmscope/static/media/left.df6c43c7c00be94ae5503ffca5a2d391.svg",
+    "static/media/mark.svg": "/filmscope/static/media/mark.06d5abe8fd353fe0c110c354bd591972.svg",
     "index.html": "/filmscope/index.html",
     "static/media/dark.svg": "/filmscope/static/media/dark.0fb8cf1c7396b1dd2bdc64443863040c.svg",
     "static/media/onestar.svg": "/filmscope/static/media/onestar.9fa3cf47e9e69a2acee5e5e3d1a5dee1.svg",
     "static/media/search.svg": "/filmscope/static/media/search.42f91f7456d3165bfc8bf2b2612e85e4.svg",
     "static/media/avatar.svg": "/filmscope/static/media/avatar.9979ef47c85bbc8e45db51517c0d60f7.svg",
+    "static/media/add.svg": "/filmscope/static/media/add.f87d31f306f38185766b575a67705f7f.svg",
     "static/media/right.svg": "/filmscope/static/media/right.977c10e59f2d7f19a203d1122e57e19c.svg",
-    "main.505c0ea5.css.map": "/filmscope/static/css/main.505c0ea5.css.map",
-    "main.99dea699.js.map": "/filmscope/static/js/main.99dea699.js.map",
+    "main.d6977d80.css.map": "/filmscope/static/css/main.d6977d80.css.map",
+    "main.fa7dad23.js.map": "/filmscope/static/js/main.fa7dad23.js.map",
     "787.6a729aaa.chunk.js.map": "/filmscope/static/js/787.6a729aaa.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.505c0ea5.css",
-    "static/js/main.99dea699.js"
+    "static/css/main.d6977d80.css",
+    "static/js/main.fa7dad23.js"
   ]
 }
