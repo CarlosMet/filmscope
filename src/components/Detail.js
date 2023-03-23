@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Navigate, Link } from 'react-router-dom'
 import YouTube from 'react-youtube'
 import './components.css'
@@ -8,9 +8,14 @@ import emptyStar from '../images/empty.svg'
 import oneStarIcon from '../images/onestar.svg'
 import ThemeSwitch from '../features/ThemeSwitch'
 import { addRevoveFav } from '../features/AddFavs'
+import trashIcon from '../images/trash.svg'
+import addIcon from '../images/add.svg'
+import mark from '../images/mark.svg'
+
 
 const Detail = () => {
 
+  const favs =JSON.parse(localStorage.getItem('favs'))
   let token = localStorage.getItem('token')
   const [detailsBg, setDetailsBg] = useState('')
   // const [movieid, setMovieid] = useState(query.get('movieID'))
@@ -21,6 +26,10 @@ const Detail = () => {
   const apiCall = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=en-US&append_to_response=videos`
   const secondApiCall = `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${apiKey}&language=en-US&page=1`
   const thirdApiCall = `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${apiKey}&language=en-US&page=1`
+  const favButton = useRef(null)
+  const loader = useRef(null)
+  const check = useRef(null)
+  const btn = useRef(null)
 
 
   const [movieVideo, setMovieVideo] = useState('')
@@ -31,6 +40,24 @@ const Detail = () => {
   const [starsToShow, setStarsToShow] = useState(['','','','',''])
   console.log(window.location.href)
   const [location, setLocation] = useState(window.location.href)
+  let clickedTimes = 0    
+  const handleFavorites = (e)=>{    
+    if(clickedTimes === 0){
+      addRevoveFav(e)
+      animateFavs()
+      clickedTimes++
+    }
+  }
+
+  function animateFavs(){
+    favButton.current.classList.add('hidden')
+    loader.current.classList.remove('hidden')
+    setTimeout(() => {
+      check.current.classList.remove('hidden')
+      loader.current.classList.add('hidden')
+    }, 1500);
+    btn.current.disabled = true;
+  }
 
   useEffect(()=>{
     window.scrollTo(0, 0)
@@ -125,12 +152,32 @@ const Detail = () => {
 
             <div className=" w-2/3 lg:w-4/5">        
               <p className="md:text-lg text-slate-300 2xl:max-w-[800px]">{movieDetails.overview}</p>  
-              <button onClick={()=> addRevoveFav({
+              <button ref={btn} className='hidden lg:block tracking-tight text-slate-300 mt-4 xl:mt-8' onClick={()=> handleFavorites({
                 imgUrl: `https://image.tmdb.org/t/p/original${movieDetails.poster_path}`,
                 description: movieDetails.overview,
                 title: movieDetails.title,
                 id: movieDetails.id
-              })}>add</button> 
+              })}>
+                <div className=''>
+                  <div className='ml-4' ref={favButton}>
+                  { favs && 
+                    favs.filter( (fav) =>{
+                      return fav.id === movieDetails.id
+                    } ).length > 0
+                    ?<div className='flex items-center gap-1 hover:text-slate-50 hover:text-lg'>
+                      <img src={trashIcon} className='w-8' alt = 'remove' />
+                      <p>Remove from favorites</p>
+                    </div>
+                    :<div className='flex items-center gap-1 hover:text-slate-50 hover:text-lg'>
+                    <img src={addIcon} className='w-8' alt = 'add' />
+                    <p>Add to favorites</p>
+                  </div>
+                  }
+                  </div>
+                  <div ref={loader} className='hidden w-6 h-6 bg-transparent border-2 border-slate-500 mx-auto rounded-full border-l-transparent fav-loading'></div>
+                  <div ref={check} className='hidden w-6 mx-auto'> <img src={mark} /> </div>
+                </div>
+              </button> 
               <p className='text-white text-lg hidden lg:block mt-2 xl:mt-4 2xl:mt-9 font-semibold'>Rating:</p>              
               <div className='hidden lg:flex items-center gap-3 mt-2 2xl:mt-6'>
                 <img src={starIcon} className='w-6' />
@@ -142,6 +189,32 @@ const Detail = () => {
             </div> 
 
           </div>  
+          <button ref={btn} className='block lg:hidden tracking-tight text-slate-300 mt-4 xl:mt-8' onClick={()=> handleFavorites({
+                imgUrl: `https://image.tmdb.org/t/p/original${movieDetails.poster_path}`,
+                description: movieDetails.overview,
+                title: movieDetails.title,
+                id: movieDetails.id
+              })}>
+                <div className=''>
+                  <div className='ml-4' ref={favButton}>
+                  { favs && 
+                    favs.filter( (fav) =>{
+                      return fav.id === movieDetails.id
+                    } ).length > 0
+                    ?<div className='flex items-center gap-1 hover:text-slate-50 hover:text-lg'>
+                      <img src={trashIcon} className='w-8' alt = 'remove' />
+                      <p>Remove from favorites</p>
+                    </div>
+                    :<div className='flex items-center gap-1 hover:text-slate-50 hover:text-lg'>
+                    <img src={addIcon} className='w-8' alt = 'add' />
+                    <p>Add to favorites</p>
+                  </div>
+                  }
+                  </div>
+                  <div ref={loader} className='hidden w-6 h-6 bg-transparent border-2 border-slate-500 mx-auto rounded-full border-l-transparent fav-loading'></div>
+                  <div ref={check} className='hidden w-6 mx-auto'> <img src={mark} /> </div>
+                </div>
+              </button>
           <p className="text-white font-medium mb-2 mt-3 lg:mt-5 2xl:mt-8">Genres:</p> 
           <div className="text-lg text-gray-200 flex flex-wrap gap-2 xl:mt-6">{movieDetails.genres && movieDetails.genres.length > 0 ? movieDetails.genres.map(genre => <p key={genre.id} className=' border border-slate-400 rounded-3xl px-4 py-2 cursor-pointer hover:bg-slate-800'>{genre.name}</p>) : 'Unknown'}
           </div>     
@@ -166,7 +239,7 @@ const Detail = () => {
         <div>
           <h2 className='text-center text-xl lg:text-2xl xl:text-3xl font-bold mt-3 lg:mt-6 xl:mt-10'>Related movies</h2>
 
-          <div className='flex my-6 lg:my-9 xl:my-12 2xl:my-16'>
+          <div className='flex my-6 lg:my-9 xl:my-12 2xl:my-16 justify-center'>
           {recommendations ? 
             recommendations.slice(0,4).map( (recommended) => {
               return(                
@@ -223,8 +296,8 @@ const Detail = () => {
         </div>
         
       </div>
-      :<div className=''>
-        <div className=''>
+      :<div className='min-h-[70vh]'>
+        <div className='mt-12'>
           <div className='loading w-9 h-9 lg:w-11 lg:h-11 border-4 border-gray-400 mx-auto rounded-full border-t-transparent my-54'></div>          
         </div>
       </div>

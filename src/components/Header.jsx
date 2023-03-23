@@ -9,7 +9,7 @@ import avatarIcon from '../images/avatar.svg'
 
 const Header = () => {
 
-  const [bgColor, setBgColor] = useState('rgba(0,0,0,0.2)')  
+  const [bgColor, setBgColor] = useState('rgba(0,0,0,0.35)')  
   const [token, setToken] = useState(localStorage.getItem('token'))
   const [darkModeVisibility, setDarkModeVisibility] = useState(false)
   const [inputWidth, setInputWidth] = useState('70px')

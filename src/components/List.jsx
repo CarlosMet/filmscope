@@ -88,18 +88,17 @@ export const List = () => {
     .then( res =>{
       setMovieList(res.data.results)      
     } )
-    .catch( err => {
-      swal(<p className='text-black'>Something went wrong, try again</p>)
-    } )
+    
 
     const trendingCall = 'https://api.themoviedb.org/3/trending/movie/week?api_key=511f0e4b3613ed97583cf0a13a5f547e&append_to_response=videos'
     axios.get(trendingCall)
     .then(res =>{
       setTrendingList(res.data.results)      
-      const {backdrop_path, title, overview, id} = res.data.results[0]
+      const {backdrop_path, title, overview, id, poster_path} = res.data.results[0]
       setBannerInfo( prevBannerInfo => ({
         ...prevBannerInfo,
         img:`https://image.tmdb.org/t/p/original${backdrop_path}`,
+        poster:`https://image.tmdb.org/t/p/original${poster_path}`,
         title,        
         overview,
         id
@@ -129,7 +128,8 @@ export const List = () => {
       title: movie.title,
       genres:movie.genres,
       overview:movie.overview,
-      id:movie.id
+      id:movie.id,
+      poster:movie.poster_path
     })
   }
   
@@ -182,14 +182,18 @@ export const List = () => {
         <h2 className='text-2xl lg:text-3xl font-bold 2xl:text-4xl tracking-tight'>{Object.keys(bannerInfo).length>0 ? bannerInfo.title: null}</h2>        
         <img src={starIcon} alt="star-rating" className='w-8 mb-2' />    
         <div className="flex">
-          <button className='px-1 w-10 h-8 bg-[#0f4847]' onClick={()=>addRemoveFavs({
-            imgUrl: `https://image.tmdb.org/t/p/500${bannerInfo.img}`,
+          <button className='px-1 w-16 tracking-tight text-sm h-12 bg-[#0f4847] hover:bg-[#1f9997]' onClick={()=>addRemoveFavs({
+            imgUrl: `https://image.tmdb.org/t/p/original${bannerInfo.poster}`,
             description: bannerInfo.overview,
             title: bannerInfo.title,
             id: bannerInfo.id
-            })}>add
+            })}>{favsList ? (favsList.filter( (fav) =>{
+              return fav.id === bannerInfo.id
+            } ).length>0 ? 'remove' : 'add')
+            : 'add'
+          }
           </button> 
-          <button className='w-11 h-8 bg-[#14c5b1]'><Link to={`/filmscope/detail?movieID=${bannerInfo.id}`}>Play</Link></button>
+          <button className='w-16 h-12 bg-[#14c5b1] hover:bg-[#18e8d0]'><Link to={`/filmscope/detail?movieID=${bannerInfo.id}`}>play</Link></button>
         </div>   
         <p className='text-slate-300 max-w-[420px] 2xl:max-w-[470px] overflow-hidden mb-8 2xl:text-lg 2xl:mb-28'>{Object.keys(bannerInfo).length>0 ? (bannerInfo.overview.length > 315 ? bannerInfo.overview.substring(0, 315) + '...' : bannerInfo.overview ) : null }</p>
       </div>
