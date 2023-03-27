@@ -26,10 +26,15 @@ const Detail = () => {
   const apiCall = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=en-US&append_to_response=videos`
   const secondApiCall = `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${apiKey}&language=en-US&page=1`
   const thirdApiCall = `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${apiKey}&language=en-US&page=1`
-  const favButton = useRef(null)
-  const loader = useRef(null)
-  const check = useRef(null)
-  const btn = useRef(null)
+  // const favButton = useRef(null)
+  // const loader = useRef(null)
+  // const check = useRef(null)
+  
+
+
+  const [favButton, setFavButton] = useState('block')
+  const [loader, setLoader] = useState('none')
+  const [check, setCheck] = useState('none')
 
 
   const [movieVideo, setMovieVideo] = useState('')
@@ -37,26 +42,24 @@ const Detail = () => {
   const [movieDetails, setMovieDetails] = useState(null)
   const [recommendations, setRecommendations] = useState(null)
   const [reviews, setReviews] = useState(null)
-  const [starsToShow, setStarsToShow] = useState(['','','','',''])
-  console.log(window.location.href)
+  
+  
   const [location, setLocation] = useState(window.location.href)
   let clickedTimes = 0    
   const handleFavorites = (e)=>{    
-    if(clickedTimes === 0){
-      addRevoveFav(e)
-      animateFavs()
-      clickedTimes++
-    }
+    addRevoveFav(e)
+    animateFavs()    
   }
 
   function animateFavs(){
-    favButton.current.classList.add('hidden')
-    loader.current.classList.remove('hidden')
+    console.log('clicked')
+    setFavButton('none')
+    setLoader('block')
     setTimeout(() => {
-      check.current.classList.remove('hidden')
-      loader.current.classList.add('hidden')
+      setCheck('block')
+      setLoader('none')
     }, 1500);
-    btn.current.disabled = true;
+    
   }
 
   useEffect(()=>{
@@ -152,14 +155,14 @@ const Detail = () => {
 
             <div className=" w-2/3 lg:w-4/5">        
               <p className="md:text-lg text-slate-300 2xl:max-w-[800px]">{movieDetails.overview}</p>  
-              <button ref={btn} className='hidden lg:block tracking-tight text-slate-300 mt-4 xl:mt-8' onClick={()=> handleFavorites({
+              <button  className='hidden lg:block tracking-tight text-slate-300 mt-4 xl:mt-8' onClick={()=> handleFavorites({
                 imgUrl: `https://image.tmdb.org/t/p/original${movieDetails.poster_path}`,
                 description: movieDetails.overview,
                 title: movieDetails.title,
                 id: movieDetails.id
               })}>
                 <div className=''>
-                  <div className='ml-4' ref={favButton}>
+                  <div className='ml-4' style={{display:favButton}} >
                   { favs && 
                     favs.filter( (fav) =>{
                       return fav.id === movieDetails.id
@@ -174,8 +177,8 @@ const Detail = () => {
                   </div>
                   }
                   </div>
-                  <div ref={loader} className='hidden w-6 h-6 bg-transparent border-2 border-slate-500 mx-auto rounded-full border-l-transparent fav-loading'></div>
-                  <div ref={check} className='hidden w-6 mx-auto'> <img src={mark} /> </div>
+                  <div  style={{display:loader}} className='hidden w-6 h-6 bg-transparent border-2 border-slate-500 mx-auto rounded-full border-l-transparent fav-loading'></div>
+                  <div style={{display:check}} className='hidden w-6 mx-auto'> <img src={mark} /> </div>
                 </div>
               </button> 
               <p className='text-white text-lg hidden lg:block mt-2 xl:mt-4 2xl:mt-9 font-semibold'>Rating:</p>              
@@ -189,14 +192,14 @@ const Detail = () => {
             </div> 
 
           </div>  
-          <button ref={btn} className='block lg:hidden tracking-tight text-slate-300 mt-4 xl:mt-8' onClick={()=> handleFavorites({
+          <button  className='block lg:hidden tracking-tight text-slate-300 mt-4 xl:mt-8' onClick={()=> handleFavorites({
                 imgUrl: `https://image.tmdb.org/t/p/original${movieDetails.poster_path}`,
                 description: movieDetails.overview,
                 title: movieDetails.title,
                 id: movieDetails.id
               })}>
                 <div className=''>
-                  <div className='ml-4' ref={favButton}>
+                  <div className='ml-4'>
                   { favs && 
                     favs.filter( (fav) =>{
                       return fav.id === movieDetails.id
@@ -211,8 +214,8 @@ const Detail = () => {
                   </div>
                   }
                   </div>
-                  <div ref={loader} className='hidden w-6 h-6 bg-transparent border-2 border-slate-500 mx-auto rounded-full border-l-transparent fav-loading'></div>
-                  <div ref={check} className='hidden w-6 mx-auto'> <img src={mark} /> </div>
+                  <div className='hidden w-6 h-6 bg-transparent border-2 border-slate-500 mx-auto rounded-full border-l-transparent fav-loading'></div>
+                  <div className='hidden w-6 mx-auto'> <img src={mark} /> </div>
                 </div>
               </button>
           <p className="text-white font-medium mb-2 mt-3 lg:mt-5 2xl:mt-8">Genres:</p> 
@@ -240,7 +243,7 @@ const Detail = () => {
           <h2 className='text-center text-xl lg:text-2xl xl:text-3xl font-bold mt-3 lg:mt-6 xl:mt-10'>Related movies</h2>
 
           <div className='flex my-6 lg:my-9 xl:my-12 2xl:my-16 justify-center'>
-          {recommendations ? 
+          {recommendations && recommendations.length>0 ? 
             recommendations.slice(0,4).map( (recommended) => {
               return(                
                   <div key={recommended.id}>
@@ -250,7 +253,10 @@ const Detail = () => {
                   </div>                
               )
             } )
-            : null
+            :<div className='grid place-items-center'>
+              <p>There are no related movies</p> 
+              <img className='w-8' src='https://uxwing.com/wp-content/themes/uxwing/download/animals-and-birds/spider-icon.svg' />
+            </div>
           }
           </div>
 

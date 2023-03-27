@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { Navigate } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
+import { addRevoveFav } from '../features/AddFavs'
 import ThemeSwitch from '../features/ThemeSwitch'
+import trashIcon from '../images/trash.svg'
+import play from '../images/playing.svg'
 
 const Favorites = () => {
 
@@ -46,15 +49,34 @@ const Favorites = () => {
                       <h2 className='font-bold text-lg tracking-tight'>{fav.title}</h2>                      
                     </div>
                     </div>
-                    <p className='tracking-tight text-sm mt-5 w-full md:w-3/5 text-[#545454]'>{fav.description.length>140 ? fav.description.substring(0, 140) + '...' : fav.description}</p>
+                    <p className='tracking-tight text-sm mt-5 w-full md:w-3/5 text-[#545454]'>{ fav.description ? (fav.description.length>140 ? fav.description.substring(0, 140) + '...' : fav.description)
+                    : null  
+                  }</p>
+                  </div>
+                  <div className='absolute flex items-center gap-3 bottom-4 text-black left-8'>
+                    <button onClick={()=> addRevoveFav(
+                      {
+                        imgUrl: `https://image.tmdb.org/t/p/original${fav.imgUrl}`,
+                        description: fav.description,
+                        title: fav.title,
+                        id: fav.id
+                      }
+                    )}>
+                      <img className='w-6 lg:w-7' src={trashIcon} alt="remove" />
+                    </button>
+                    <button>
+                      <Link to={`/filmscope/detail?movieID=${fav.id}`} >
+                        <img className='w-6 lg:w-7 mt-1' src={play} alt="" />
+                      </Link>
+                    </button>
                   </div>
 
-                <div className='flex bg-color w-full h-1/2 md:h-full md:w-2/5 bg-[#E5E6E6] dark:bg-[#0D0D0C]'>
+                <div className='flex bg-color w-full h-1/2 md:h-full md:w-1/2 bg-[#E5E6E6] dark:bg-[#0D0D0C]'>
                   
                 </div>
 
                 <div 
-                  className='bgimg w-full h-1/2 md:h-full md:w-3/5' 
+                  className='bgimg w-full h-1/2 md:h-full md:w-1/2' 
                   style={{
                     backgroundImage: `linear-gradient(to right, ${cardsBgColor}, transparent), url(${fav.imgUrl})`,
                     backgroundSize: 'cover',
