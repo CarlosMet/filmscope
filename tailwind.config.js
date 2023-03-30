@@ -5,10 +5,14 @@ module.exports = {
   ],
   darkMode: "class",
   theme: {
-    extend: {},
+    extend: {
+      backgroundColor:{
+        'rgba-70': 'rgba(30, 30, 30, 0.5)'
+      }
+    },
     screens:{
       sm: '490px',
-      md: '670px',
+      md: '640px',
       lg: '899px',
       xl: '1280px',
       '2xl': '1450px',

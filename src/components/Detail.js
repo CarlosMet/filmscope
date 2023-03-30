@@ -58,6 +58,10 @@ const Detail = () => {
     setTimeout(() => {
       setCheck('block')
       setLoader('none')
+      setTimeout(() => {
+        setFavButton('block')
+        setCheck('none')
+      }, 600);
     }, 1500);
     
   }
@@ -199,7 +203,7 @@ const Detail = () => {
                 id: movieDetails.id
               })}>
                 <div className=''>
-                  <div className='ml-4'>
+                  <div className='ml-4' style={{display:favButton}} >
                   { favs && 
                     favs.filter( (fav) =>{
                       return fav.id === movieDetails.id
@@ -214,12 +218,18 @@ const Detail = () => {
                   </div>
                   }
                   </div>
-                  <div className='hidden w-6 h-6 bg-transparent border-2 border-slate-500 mx-auto rounded-full border-l-transparent fav-loading'></div>
-                  <div className='hidden w-6 mx-auto'> <img src={mark} /> </div>
+                  <div style={{display:loader}} className='hidden w-6 h-6 bg-transparent border-2 border-slate-500 mx-auto rounded-full border-l-transparent fav-loading'></div>
+                  <div style={{display:check}} className='hidden w-6 mx-auto'> <img src={mark} /> </div>
                 </div>
               </button>
           <p className="text-white font-medium mb-2 mt-3 lg:mt-5 2xl:mt-8">Genres:</p> 
-          <div className="text-lg text-gray-200 flex flex-wrap gap-2 xl:mt-6">{movieDetails.genres && movieDetails.genres.length > 0 ? movieDetails.genres.map(genre => <p key={genre.id} className=' border border-slate-400 rounded-3xl px-4 py-2 cursor-pointer hover:bg-slate-800'>{genre.name}</p>) : 'Unknown'}
+          <div className="text-lg text-gray-200 flex flex-wrap gap-2 xl:mt-6">{movieDetails.genres && movieDetails.genres.length > 0 ? movieDetails.genres.map( (genre) => {
+            return (
+              <Link to={`/filmscope/genre?genreID=${genre.id}`}><p key={genre.id} className=' border border-slate-400 rounded-3xl px-4 py-2 cursor-pointer hover:bg-slate-800'>{genre.name}</p></Link>
+            )
+          }
+          )
+          : 'Unknown'}
           </div>     
       </div>
         <div>

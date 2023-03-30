@@ -102,3 +102,13 @@
         opacity: 0;
     }
 }
+.genre-img{
+    aspect-ratio: 602/338;
+}
+
+.add-hover:hover{
+    background-color: rgba(59, 55, 57, 0.8);
+}
+.play-hover:hover{
+    background-color: #60e459;
+}

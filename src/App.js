@@ -7,6 +7,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Detail from './components/Detail';
 import Favorites from './components/Favorites';
+import Genre from './components/Genre';
 
 function App() {
   function addRevoveFav() {
@@ -20,6 +21,7 @@ function App() {
         <Route path='/filmscope/list' element={<List />} />
         <Route path='/filmscope/detail' element={<Detail />} />  
         <Route path='/filmscope/favs' element={<Favorites />} /> 
+        <Route path='/filmscope/genre' element={<Genre />} />
       </Routes>      
       <Footer />
     </div>
