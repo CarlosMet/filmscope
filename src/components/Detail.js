@@ -271,10 +271,10 @@ const Detail = () => {
           </div>
 
         </div>
-        <div>
+        <div >
           <h2 className='text-center text-xl lg:text-2xl xl:text-3xl font-bold mt-3 lg:mt-6 xl:mt-10'>Reviews</h2>
 
-          <div className='grid grid-cols-1 gap-2 mt-3 lg:mt-6 xl:mt-12'>
+          <div className='grid grid-cols-1 gap-2 mt-3 lg:mt-6 xl:mt-12 max-w-[100vw] overflow-hidden'>
           {reviews && reviews.length>0
             ? reviews.slice(0, 5).map( (review)=>{
               const starRating = showStars(review.author_details?.rating)
@@ -295,7 +295,7 @@ const Detail = () => {
                          )
                       } )}
                     </div>
-                    <p className='mt-4 tracking-tight text-sm md:text-base'>{review.content.length > 240 ? review.content.replace(/[\r\n]/g, "").substring(0, 240) + '...' : review.content.replace(/[\r\n]/g, "") }</p>
+                    <p className='mt-4 tracking-tight text-sm md:text-base max-w-[220px] '>{review.content.length > 240 ? review.content.replace(/[\r\n]/g, "").substring(0, 240) + '...' : review.content.replace(/[\r\n]/g, "") }</p>
                   </div>
 
                 </div>
