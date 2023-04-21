@@ -22,9 +22,10 @@ const Footer = () => {
             </div>
             <div className='text-white'>
               <h3 className='mb-6 lg:mb-8 font-bold h-8'>Features</h3>
-              <ul className='tracking-tight'>
+              <ul className='tracking-tight flex flex-col gap-2'>
                 <li>Trailers</li>
-                <li>Search</li>                
+                <li>Search</li>      
+                <li>Add/Remove favs</li>          
               </ul>
             </div>
 

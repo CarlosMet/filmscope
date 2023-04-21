@@ -9,6 +9,7 @@ import redHeartIcon from '../images/red-heart.svg'
 import heartIcon from '../images/heart.svg'
 import leftIcon from '../images/left.svg'
 import rightIcon from '../images/right.svg'
+import Player from './Player'
 
 const apiKey = '511f0e4b3613ed97583cf0a13a5f547e'
 
@@ -78,6 +79,8 @@ export const List = () => {
   const [bannerInfo, setBannerInfo] = useState({})
   const [page, setPage] = useState('1')
   const [btnBgColor, setBtnBgColor] = useState(['#14C8B9', 'inherit', 'inherit', 'inherit', 'inherit'])
+  const [showPlayer, setShowPlayer] = useState(false)
+  const [playerId, setPlayerId] = useState(null)
 
   const navigate = useNavigate()
   let token = localStorage.getItem('token')
@@ -164,13 +167,22 @@ export const List = () => {
       updateButtonColors(pageNum);
     }
   };
+
+  const handlePlayer = (id)=>{
+    setShowPlayer( showPlayer ? false : true )
+    setPlayerId(id)    
+  }
   
+  const playerData = (openClose)=>{
+    setShowPlayer(openClose)
+  }
 
   return (
     
-    <div className='list overflow-hidden'>
+    <div className='list overflow-hidden relative'>
     { !token && <Navigate to='/filmscope' replace={true} /> }
     <Header />
+    { showPlayer && <Player id={playerId} playHandler={playerData} />}
     <div className='banner min-h-[100vh] w-[100vw]' style={{
       backgroundImage:`url('${bannerInfo.img}')`,
       textShadow: '2px 2px 2px black',
@@ -193,7 +205,8 @@ export const List = () => {
             : 'add'
           }
           </button> 
-          <button className='w-16 h-12 bg-[#14c5b1] hover:bg-[#18e8d0]'><Link to={`/filmscope/detail?movieID=${bannerInfo.id}`}>play</Link></button>
+          <button className='w-16 h-12 bg-[#14c5b1] hover:bg-[#18e8d0]'><Link to={`/filmscope/detail?movieID=${bannerInfo.id}`}>details</Link></button>
+          <button onClick={()=>handlePlayer(bannerInfo.id)} className='w-16 h-12 bg-green-300 hover:bg-green-200'>Play trailer</button>
         </div>   
         <p className='text-slate-300 max-w-[420px] 2xl:max-w-[470px] overflow-hidden mb-8 2xl:text-lg 2xl:mb-28'>{Object.keys(bannerInfo).length>0 ? (bannerInfo.overview.length > 315 ? bannerInfo.overview.substring(0, 315) + '...' : bannerInfo.overview ) : null }</p>
       </div>

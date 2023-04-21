@@ -295,7 +295,7 @@ const Detail = () => {
                          )
                       } )}
                     </div>
-                    <p className='mt-4 tracking-tight text-sm md:text-base max-w-[220px] '>{review.content.length > 240 ? review.content.replace(/[\r\n]/g, "").substring(0, 240) + '...' : review.content.replace(/[\r\n]/g, "") }</p>
+                    <p className='mt-4 tracking-tight text-sm md:text-base max-w-[220px] md:max-w-max '>{review.content.length > 240 ? review.content.replace(/[\r\n]/g, "").substring(0, 240) + '...' : review.content.replace(/[\r\n]/g, "") }</p>
                   </div>
 
                 </div>
